@@ -3,10 +3,13 @@ package org.mushare.pluto;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlutoUser {
     private long userId;
     private String deviceId;
-    private String [] scopes;
+    private List<String> scopes;
     private LoginType loginType;
 
     public long getUserId() {
@@ -17,6 +20,10 @@ public class PlutoUser {
         return deviceId;
     }
 
+    public List<String> getScopes() {
+        return scopes;
+    }
+
     public LoginType getLoginType() {
         return loginType;
     }
@@ -25,9 +32,9 @@ public class PlutoUser {
         userId = payload.getLong("userId");
         deviceId = payload.getString("deviceId");
         JSONArray scopeArray = payload.getJSONArray("scopes");
-        scopes = new String[scopeArray.size()];
+        scopes = new ArrayList<>();
         for (int i = 0; i < scopeArray.size(); i++) {
-            scopes[i] = scopeArray.getString(i);
+            scopes.add(scopeArray.getString(i));
         }
         loginType = LoginType.fromIdentifier(payload.getString("login_type"));
     }

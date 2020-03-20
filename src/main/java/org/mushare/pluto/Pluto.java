@@ -37,7 +37,7 @@ public class Pluto {
             JSONObject payload = JSONObject.fromObject(new String(Base64.getDecoder().decode(parts[1]), "utf-8"));
             // Verify the appId of the jwt token.
             if (!payload.getString("appId").equals(shared.appId)) {
-                ;
+                throw new PlutoException(PlutoErrorCode.appIdError);
             }
             Long expire = payload.getLong("expire_time") * 1000;
             if (expire < System.currentTimeMillis()) {
