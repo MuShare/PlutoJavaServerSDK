@@ -46,19 +46,8 @@ publishing {
     publications {
         maven(MavenPublication) {
             version '0.1'
-
-            pom {
-                url 'https://github.com/MuShare/PlutoJavaServerSDK'
-                licenses {
-                    license {
-                        name = 'MIT'
-                    }
-                }
-            }
-
+            group 'org.mushare'
             from components.java
-            artifact sourcesJar
-            artifact javadocJar
         }
     }
 }
