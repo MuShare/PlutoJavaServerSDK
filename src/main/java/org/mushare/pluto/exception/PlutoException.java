@@ -4,9 +4,9 @@ public class PlutoException extends RuntimeException {
 
     private final PlutoError error;
 
-    public PlutoException(PlutoError error) {
+    public PlutoException(PlutoErrorCode code) {
         super();
-        this.error = error;
+        this.error = new PlutoError(code);
     }
 
 }
