@@ -9,6 +9,7 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    id 'maven-publish'
 }
 
 repositories {
@@ -28,4 +29,36 @@ dependencies {
     compile 'net.sf.json-lib:json-lib:2.4:jdk15'
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "github"
+            url = 'https://maven.pkg.github.com/MuShare/PlutoJavaServerSDK'
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+
+    publications {
+        maven(MavenPublication) {
+            version '0.1'
+
+            pom {
+                url 'https://github.com/MuShare/PlutoJavaServerSDK'
+                licenses {
+                    license {
+                        name = 'MIT'
+                    }
+                }
+            }
+
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
 }
