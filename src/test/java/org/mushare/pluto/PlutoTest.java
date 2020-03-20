@@ -6,8 +6,6 @@ import org.junit.rules.ExpectedException;
 import org.mushare.pluto.exception.PlutoErrorCode;
 import org.mushare.pluto.exception.PlutoException;
 
-import java.util.Base64;
-
 import static org.junit.Assert.assertTrue;
 
 public class PlutoTest {
