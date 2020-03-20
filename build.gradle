@@ -37,8 +37,8 @@ publishing {
             name = "github"
             url = 'https://maven.pkg.github.com/MuShare/PlutoJavaServerSDK'
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = System.getenv("USERNAME")
+                password = System.getenv("PASSWORD")
             }
         }
     }
