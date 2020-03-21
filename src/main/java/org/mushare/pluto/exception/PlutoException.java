@@ -1,6 +1,6 @@
 package org.mushare.pluto.exception;
 
-public class PlutoException extends RuntimeException {
+public class PlutoException extends Exception {
 
     private final PlutoError error;
 
