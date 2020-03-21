@@ -24,7 +24,7 @@ public class Pluto {
         shared.appId = appId;
     }
 
-    public static PlutoUser auth(String token) {
+    public static PlutoUser auth(String token) throws PlutoException {
         if (token == null) {
             throw new PlutoException(PlutoErrorCode.jwtFormatError);
         }

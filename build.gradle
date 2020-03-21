@@ -45,8 +45,9 @@ publishing {
 
     publications {
         maven(MavenPublication) {
-            version '0.1'
+            version '0.1.1'
             group 'org.mushare'
+            artifacts 'pluto-java-server-sdk'
             from components.java
         }
     }

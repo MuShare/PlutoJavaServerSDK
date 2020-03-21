@@ -9,8 +9,13 @@ public class PlutoException extends RuntimeException {
         this.error = new PlutoError(code);
     }
 
+    public PlutoError getError() {
+        return error;
+    }
+
     @Override
     public String getMessage() {
         return error.getMessage();
     }
+
 }
