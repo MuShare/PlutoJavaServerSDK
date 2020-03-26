@@ -31,10 +31,12 @@ public class PlutoUser {
     public PlutoUser(JSONObject payload) {
         userId = payload.getLong("userId");
         deviceId = payload.getString("deviceId");
-        JSONArray scopeArray = payload.getJSONArray("scopes");
         scopes = new ArrayList<>();
-        for (int i = 0; i < scopeArray.size(); i++) {
-            scopes.add(scopeArray.getString(i));
+        if (payload.containsKey("scopes")) {
+            JSONArray scopeArray = payload.getJSONArray("scopes");
+            for (int i = 0; i < scopeArray.size(); i++) {
+                scopes.add(scopeArray.getString(i));
+            }
         }
         loginType = LoginType.fromIdentifier(payload.getString("login_type"));
     }
