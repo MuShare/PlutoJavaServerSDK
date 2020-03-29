@@ -32,7 +32,7 @@ public class PlutoUser {
         userId = payload.getLong("userId");
         deviceId = payload.getString("deviceId");
         scopes = new ArrayList<>();
-        if (payload.containsKey("scopes")) {
+        if (payload.containsKey("scopes") && payload.get("scopes") != null) {
             JSONArray scopeArray = payload.getJSONArray("scopes");
             for (int i = 0; i < scopeArray.size(); i++) {
                 scopes.add(scopeArray.getString(i));
