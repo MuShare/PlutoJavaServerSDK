@@ -45,7 +45,7 @@ publishing {
 
     publications {
         maven(MavenPublication) {
-            version '0.1.3'
+            version '0.1.4'
             group 'org.mushare'
             from components.java
         }
