@@ -6,6 +6,9 @@ import org.junit.rules.ExpectedException;
 import org.mushare.pluto.exception.PlutoErrorCode;
 import org.mushare.pluto.exception.PlutoException;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static org.junit.Assert.assertTrue;
 
 public class PlutoTest {
@@ -40,6 +43,14 @@ public class PlutoTest {
         Pluto.setup("https://easyjapanese-api-gateway.mushare.cn/pluto/", "org.mushare.easyjapanese");
         String token = "eyJ0eXBlIjoiand0IiwiYWxnIjoicnNhIn0.eyJ0eXBlIjoiYWNjZXNzIiwiY3JlYXRlX3RpbWUiOjE1ODU0NDg1MTcsImV4cGlyZV90aW1lIjoxNTg1NDUyMTE3LCJ1c2VySWQiOjQ4LCJkZXZpY2VJZCI6IkM5QTExQTIzLTg1QTMtNEMwRC04RjQxLTE5QURBNEIwOTJFRSIsImFwcElkIjoib3JnLm11c2hhcmUuZWFzeWphcGFuZXNlIiwic2NvcGVzIjpudWxsLCJsb2dpbl90eXBlIjoiZ29vZ2xlIn0.LyYEgEIxc1ghirESmvvpDE/EEd9B0U10BRgbKt3YdfiCb6L3URizHIqJVoc6IhPZOOBNy2x2Dk/sCZ5JV1rtaZ8niMdAb7VL7PwObZiWuWT8TieuV+7DaPxcJrPdzgz46GOOX7o3+fWRr64ucOYZeiY/g0PBCL07dMPRHYyzHK7e8Wrb/59rUjO4GCad5vM5qny9jTXihB+IokBPOYDkhKCinOfMAqOOFOtVRVdxt/mCLhnjkxexwWM/a7vmJQ4qOZYHxAB9mbgDq+mbBfzWafFWhbADdZdSqyKnKUDguBE1fPRODLqTIqB0KL4cttgSHKivlwwiVaaxZUEkwGN4GQ";
         Pluto.auth(token);
+    }
+
+    @Test
+    public void testFetchUserInfos() {
+        Pluto.setup("https://staging.easyjapanese-api-gateway.mushare.cn/pluto/", "org.mushare.easyjapanese");
+        Pluto.fetUserInfos(Stream.of(1L, 2L, 3L).collect(Collectors.toList())).forEach(plutoUserInfo -> {
+            System.out.println(plutoUserInfo);
+        });
     }
     
 }

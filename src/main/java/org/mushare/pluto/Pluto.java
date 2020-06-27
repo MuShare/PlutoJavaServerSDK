@@ -1,13 +1,20 @@
 package org.mushare.pluto;
 
+import com.github.kevinsawicki.http.HttpRequest;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.mushare.pluto.exception.PlutoErrorCode;
 import org.mushare.pluto.exception.PlutoException;
 
 import java.io.UnsupportedEncodingException;
 import java.security.Signature;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Pluto {
 
@@ -71,9 +78,31 @@ public class Pluto {
         return new PlutoUser(payload);
     }
 
-    public static List<PlutoUserInfo> fetUserInfos(long[] userIds) {
-
-        return null;
+    public static List<PlutoUserInfo> fetUserInfos(List<Long> userIds) {
+        if (userIds == null || userIds.size() == 0) {
+            return new ArrayList<>();
+        }
+        String ids = userIds.stream()
+                .map(userId -> userId + "-")
+                .reduce("", (s1, s2) -> {
+                    return s1 + s2;
+                });
+        ids = ids.substring(0, ids.length() - 1);
+        String response = HttpRequest.get(shared.server + "api/user/info/" + ids).body();
+        JSONArray body = JSONObject.fromObject(response).getJSONArray("body");
+        return IntStream.range(0, body.size())
+                .mapToObj(index -> {
+                    JSONObject object = body.getJSONObject(index);
+                    PlutoUserInfo info = new PlutoUserInfo();
+                    info.setUserId(object.getLong("id"));
+                    if (object.containsKey("err_code") && object.getInt("err_code") == 403) {
+                        return info;
+                    }
+                    info.setAvatar(object.getString("avatar"));
+                    info.setName(object.getString("name"));
+                    return info;
+                })
+                .collect(Collectors.toList());
     }
 
 }
