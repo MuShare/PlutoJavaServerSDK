@@ -7,10 +7,12 @@ import org.mushare.pluto.exception.PlutoException;
 import java.io.UnsupportedEncodingException;
 import java.security.Signature;
 import java.util.Base64;
+import java.util.List;
 
 public class Pluto {
 
     private PublicKeyManager keyManager;
+    private String server;
     private String appId;
 
     private Pluto() {
@@ -21,6 +23,7 @@ public class Pluto {
 
     public static void setup(String server, String appId) {
         shared.keyManager = new PublicKeyManager(server);
+        shared.server = server;
         shared.appId = appId;
     }
 
@@ -66,6 +69,11 @@ public class Pluto {
             throw new PlutoException(PlutoErrorCode.notVerified);
         }
         return new PlutoUser(payload);
+    }
+
+    public static List<PlutoUserInfo> fetUserInfos(long[] userIds) {
+
+        return null;
     }
 
 }
