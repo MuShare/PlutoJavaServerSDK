@@ -20,8 +20,8 @@ public class PlutoTest {
     @Test
     public void testAuth() throws PlutoException {
         setup();
-        String scope = "easyjapanese.admin";
-        String token = "eyJ0eXBlIjoiand0IiwiYWxnIjoicnNhIn0.eyJ0eXBlIjoiYWNjZXNzIiwiY3JlYXRlX3RpbWUiOjE1ODQ4NTQyNjEsImV4cGlyZV90aW1lIjoxNjE2MjE3NDYxLCJ1c2VySWQiOjMsImRldmljZUlkIjoiQ0Y0Mzc5MzMtQ0MyMS00QUFCLTgxNjEtMUU1MTVCNjQxQTU5IiwiYXBwSWQiOiJvcmcubXVzaGFyZS5lYXN5amFwYW5lc2UiLCJzY29wZXMiOlsiZWFzeWphcGFuZXNlLmFkbWluIl0sImxvZ2luX3R5cGUiOiJtYWlsIn0.RlrKt8fy+rXF9h9/H5w8es4Ni9IlCapDkuA8rxqX09Hv3VUFyY3tt+wdGTihNv9zZSm8Sf7m9ILkq0er826V9p1lUHk50pYlwigTvu4lG5g2uU/bAwt7EwPhxfco6XlA4Z0sQUqS49yM+dmVWnl66bhookkipcDZchpFzr3TOdbmPjTgJ8mMUZO46Kx1fSQhzOJdCAjdkMP44oeuTwcfn1NRZBXacF/HzVLpg+R8APv5oXAmvN4A8HSYoVMRaZn7Z1L6mspOyLfkOuNsOYT1iDM6jkAq0Lj/ST/n7fhNw+2+cadGe2aPBkeU8H7qzgQJEqE0iAlTtFQF6O1Qt0duxQ";
+        String scope = "easyjapanese.user";
+        String token = "eyJ0eXBlIjoiand0IiwiYWxnIjoicnNhIn0.eyJ0eXBlIjoiYWNjZXNzIiwiY3JlYXRlX3RpbWUiOjE1ODQ3MTA3NzksImV4cGlyZV90aW1lIjoxNTg0NzE0Mzc5LCJ1c2VySWQiOjMsImRldmljZUlkIjoiQ0Y0Mzc5MzMtQ0MyMS00QUFCLTgxNjEtMUU1MTVCNjQxQTU5IiwiYXBwSWQiOiJvcmcubXVzaGFyZS5lYXN5amFwYW5lc2UiLCJzY29wZXMiOlsiZWFzeWphcGFuZXNlLmFkbWluIl0sImxvZ2luX3R5cGUiOiJtYWlsIn0.TR0A/fen5f+kg4APscFQ7JZtp2zNw5KMUeKBzm/GJg4WZp90ihg/OPfU9fcaJhoVNHWqxQ/OIHfAcXaXV+l8EEsTbh/+/Qs0glujX09Vm5z23wITzC36X+a/9bJJj5J1kXDtyx/CVdMmf8vm81T8PJFJuJtnyzA3IMRUGK0KecJ5MQjaOvh7NxZRhJfsCNYQz4V5hxvtI8urs+gi3/QVN04UQ5i0BX+DDdQ1E4MX8+3v2zDPc3ipQ8r9nZl00wmPdcqW5zx9Xooha6X8eTujgQuLiSFDheZGRR6/N+ZYktt/PMI49KIXVseenTTTzpX1Vmg9PAabPLJotdjcRpKtiA";
         assertTrue("testAuth should return 'true'", Pluto.auth(token).getScopes().contains(scope));
     }
 
