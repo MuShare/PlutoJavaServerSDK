@@ -24,7 +24,7 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:28.1-jre'
-
+    implementation 'com.auth0:java-jwt:3.10.3'
     compile 'com.github.kevinsawicki:http-request:6.0'
     compile 'net.sf.json-lib:json-lib:2.4:jdk15'
     // Use JUnit test framework

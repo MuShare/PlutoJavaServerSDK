@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 public class PlutoTest {
 
     private void setup() {
-        Pluto.setup("https://staging.easyjapanese-api-gateway.mushare.cn/pluto/", "org.mushare.easyjapanese");
+        Pluto.setup("https://beta-pluto.kaboocha.com/", "org.mushare.easyjapanese");
     }
 
     @Test
@@ -40,14 +40,14 @@ public class PlutoTest {
 
     @Test
     public void testScopes() throws PlutoException {
-        Pluto.setup("https://easyjapanese-api-gateway.mushare.cn/pluto/", "org.mushare.easyjapanese");
-        String token = "eyJ0eXBlIjoiand0IiwiYWxnIjoicnNhIn0.eyJ0eXBlIjoiYWNjZXNzIiwiY3JlYXRlX3RpbWUiOjE1ODU0NDg1MTcsImV4cGlyZV90aW1lIjoxNTg1NDUyMTE3LCJ1c2VySWQiOjQ4LCJkZXZpY2VJZCI6IkM5QTExQTIzLTg1QTMtNEMwRC04RjQxLTE5QURBNEIwOTJFRSIsImFwcElkIjoib3JnLm11c2hhcmUuZWFzeWphcGFuZXNlIiwic2NvcGVzIjpudWxsLCJsb2dpbl90eXBlIjoiZ29vZ2xlIn0.LyYEgEIxc1ghirESmvvpDE/EEd9B0U10BRgbKt3YdfiCb6L3URizHIqJVoc6IhPZOOBNy2x2Dk/sCZ5JV1rtaZ8niMdAb7VL7PwObZiWuWT8TieuV+7DaPxcJrPdzgz46GOOX7o3+fWRr64ucOYZeiY/g0PBCL07dMPRHYyzHK7e8Wrb/59rUjO4GCad5vM5qny9jTXihB+IokBPOYDkhKCinOfMAqOOFOtVRVdxt/mCLhnjkxexwWM/a7vmJQ4qOZYHxAB9mbgDq+mbBfzWafFWhbADdZdSqyKnKUDguBE1fPRODLqTIqB0KL4cttgSHKivlwwiVaaxZUEkwGN4GQ";
+        setup();
+        String token = "eyJ0eXBlIjoiand0IiwiYWxnIjoiUlMyNTYifQ.eyJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNjAxNTUxMjU1LCJleHAiOjE2MDE1NTQ4NTUsInN1YiI6NTIwMywiaXNzIjoib3JnLm11c2hhcmUuZWFzeWphcGFuZXNlIiwic2NvcGVzIjpbIiJdfQ.S3ZTAFFlwmV3DJCYQrN_N0GDbpAfIPZlwXd1uxlDdMxXw_vkkLDffYjJjEA-nQ2Q1wgImb3YqA-SI3mbv_giiqo83NgiCeLVYTRDqVxj-ZJYJQRllD0o09DeeI_v5_Mll2toWF3cQaF8yEkzPR-AmOph-0eOw7vC5VJoMYy1SiVIf04wOR7wByidhkwbkPnn7X3cjFytOLKA2ZE_ikMpZ02NfRllddxK9IBa-NYVd_1cIleU-a8WSz8xPKCDDrq5He0M2ZCN0DpXdi4p2FI4wCGRSi3YvcSHwszJWV8dQQcgNhVi9T_oPhWSSTG_dZjQB9TTLq4IkJj6XYyQv8kI6Q";
         Pluto.auth(token);
     }
 
     @Test
     public void testFetchUserInfos() {
-        Pluto.setup("https://staging.easyjapanese-api-gateway.mushare.cn/pluto/", "org.mushare.easyjapanese");
+        setup();
         Pluto.fetUserInfos(Stream.of(1L, 2L, 3L).collect(Collectors.toList())).forEach(plutoUserInfo -> {
             System.out.println(plutoUserInfo);
         });

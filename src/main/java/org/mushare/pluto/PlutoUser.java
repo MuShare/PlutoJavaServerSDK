@@ -1,43 +1,28 @@
 package org.mushare.pluto;
 
+import com.auth0.jwt.interfaces.Claim;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class PlutoUser {
     private long userId;
-    private String deviceId;
     private List<String> scopes;
-    private LoginType loginType;
 
     public long getUserId() {
         return userId;
-    }
-
-    public String getDeviceId() {
-        return deviceId;
     }
 
     public List<String> getScopes() {
         return scopes;
     }
 
-    public LoginType getLoginType() {
-        return loginType;
-    }
-
-    public PlutoUser(JSONObject payload) {
-        userId = payload.getLong("userId");
-        deviceId = payload.getString("deviceId");
-        scopes = new ArrayList<>();
-        if (payload.containsKey("scopes") && !payload.get("scopes").equals("null")) {
-            JSONArray scopeArray = payload.getJSONArray("scopes");
-            for (int i = 0; i < scopeArray.size(); i++) {
-                scopes.add(scopeArray.getString(i));
-            }
-        }
-        loginType = LoginType.fromIdentifier(payload.getString("login_type"));
+    public PlutoUser(Map<String, Claim> claims) {
+        userId = claims.get("sub").asLong();
+        scopes = claims.get("scopes").asList(String.class);
     }
 }

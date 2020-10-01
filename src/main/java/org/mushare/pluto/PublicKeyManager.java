@@ -26,7 +26,7 @@ public class PublicKeyManager {
 
     public PublicKey getPublicKey() {
         if (publicKey == null) {
-            String response = HttpRequest.get(server + "api/auth/publickey").body();
+            String response = HttpRequest.get(server + "v1/token/publickey").body();
             String text = JSONObject.fromObject(response).getJSONObject("body").getString("public_key");
             text = text.replaceAll("\r|\n", "")
                     .replace("-----BEGIN PUBLIC KEY-----", "")
